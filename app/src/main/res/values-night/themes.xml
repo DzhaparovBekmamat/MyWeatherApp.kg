@@ -1,0 +1,11 @@
+<resources>
+    <style name="Theme.WeatherAppkg" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="colorPrimary">@color/beka</item>
+        <item name="colorPrimaryVariant">@color/beka</item>
+        <item name="colorOnPrimary">@color/beka</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>
