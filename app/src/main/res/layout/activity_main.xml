@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     tools:context=".MainActivity">
-=======
-    tools:context=".ui.MainActivity">
->>>>>>> bac08e0 (Initial commit)
 
     <ImageView
         android:layout_width="match_parent"
@@ -53,11 +49,7 @@
                 android:drawableEnd="@drawable/location"
                 android:drawablePadding="2dp"
                 android:fontFamily="@font/light"
-<<<<<<< HEAD
-                android:paddingHorizontal="12dp"
-=======
                 android:paddingHorizontal="10dp"
->>>>>>> bac08e0 (Initial commit)
                 android:text="Mumbai, India"
                 android:textColor="#0DA0EA"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,11 +63,7 @@
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/light"
                 android:text="33°C"
-<<<<<<< HEAD
-                android:textSize="60sp"
-=======
                 android:textSize="46sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_date"
@@ -83,13 +71,8 @@
 
             <ImageView
                 android:id="@+id/temp_solution"
-<<<<<<< HEAD
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-=======
                 android:layout_width="45dp"
                 android:layout_height="45dp"
->>>>>>> bac08e0 (Initial commit)
                 android:layout_marginTop="48dp"
                 android:background="@drawable/cloud"
                 app:layout_constraintEnd_toStartOf="@id/temperature"
@@ -103,11 +86,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/light"
                 android:text="Sunny"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toStartOf="@id/temperature"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/temp_solution"
@@ -121,11 +100,7 @@
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/light"
                 android:text="35°C"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:drawableEndCompat="@drawable/arrow_up"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/temperature"
@@ -140,11 +115,7 @@
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/light"
                 android:text="27°C"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:drawableEndCompat="@drawable/arrow_down"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/temperature"
@@ -167,11 +138,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/light"
                 android:text="49%"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toEndOf="@id/humidity"
                 app:layout_constraintStart_toStartOf="@id/humidity"
                 app:layout_constraintTop_toBottomOf="@id/humidity"
@@ -206,11 +173,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/light"
                 android:text="23 km/h"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toEndOf="@id/wind"
                 app:layout_constraintStart_toStartOf="@id/wind"
                 app:layout_constraintTop_toBottomOf="@id/wind"
@@ -244,11 +207,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/light"
                 android:text="1,007mBar"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toEndOf="@id/pressure"
                 app:layout_constraintStart_toStartOf="@id/pressure"
                 app:layout_constraintTop_toBottomOf="@id/pressure"
@@ -293,11 +252,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/light"
                 android:text="6:03 AM"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toEndOf="@id/sunrise"
                 app:layout_constraintStart_toStartOf="@id/sunrise"
                 app:layout_constraintTop_toBottomOf="@id/sunrise"
@@ -331,11 +286,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/light"
                 android:text="13h 1m"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toEndOf="@id/day_time"
                 app:layout_constraintStart_toStartOf="@id/day_time"
                 app:layout_constraintTop_toBottomOf="@id/day_time"
@@ -369,11 +320,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/light"
                 android:text="7:05 PM"
-<<<<<<< HEAD
-                android:textSize="20sp"
-=======
                 android:textSize="18sp"
->>>>>>> bac08e0 (Initial commit)
                 app:layout_constraintEnd_toEndOf="@id/sunset"
                 app:layout_constraintStart_toStartOf="@id/sunset"
                 app:layout_constraintTop_toBottomOf="@id/sunset"
