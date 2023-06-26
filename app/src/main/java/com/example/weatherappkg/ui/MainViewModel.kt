@@ -5,18 +5,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weatherappkg.data.model.WeatherModel
 import com.example.weatherappkg.data.repository.WeatherRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /**
  * Author: Dzhaparov Bekmamat
  */
-class MainViewModel: ViewModel() {
-
-    private val repository = WeatherRepository()
-
-    var livedata : LiveData<WeatherModel> = MutableLiveData()
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val repo: WeatherRepository
+) : ViewModel() {
+    //наследуется от ViewModel
+//    private val repository =
+//        WeatherRepository() //создается экземпляр WeatherRepository для доступа к его репозиториям
+    var livedata: LiveData<WeatherModel> =
+        MutableLiveData() //livedata будет содержать данные о погоде и использоваться для наблюдения за обновлениями данных
 
     fun getWeather() {
-        livedata = repository.getWeather()
+        livedata = repo.getWeather()
     }
-
 }
