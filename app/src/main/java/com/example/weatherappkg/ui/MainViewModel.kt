@@ -21,7 +21,7 @@ class MainViewModel @Inject constructor(
     var livedata: LiveData<WeatherModel> =
         MutableLiveData() //livedata будет содержать данные о погоде и использоваться для наблюдения за обновлениями данных
 
-    fun getWeather() {
-        livedata = repo.getWeather()
+    fun getWeather(name: String) {
+        livedata = repo.getWeather(name)
     }
 }

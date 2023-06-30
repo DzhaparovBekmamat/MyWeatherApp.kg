@@ -15,6 +15,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.weatherappkg.R
 import com.example.weatherappkg.adapter.WeatherAdapter
 import com.example.weatherappkg.databinding.ActivityMainBinding
+import com.example.weatherappkg.ui.searchFragment.SearchFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.Instant
 import java.time.ZoneId
@@ -23,7 +24,7 @@ import java.util.*
 
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchFragment.Result {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: WeatherAdapter
     private val handler = Handler()
@@ -39,32 +40,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.button.setOnClickListener {
+            val searchFragment = SearchFragment(this)
+            searchFragment.show(supportFragmentManager, "TAG")
+        }
         recyclerView = findViewById(R.id.recycler_view)
         adapter = WeatherAdapter()
         recyclerView.layoutManager = GridLayoutManager(this, 3)
         recyclerView.adapter = adapter
-        viewModel.getWeather()
-        viewModel.livedata.observe(this) { weatherData ->
-            binding.temperature.text = "${weatherData.current.temp_c}°C"
-            binding.humidityPercent.text = "${weatherData.current.humidity}%"
-            binding.pressureMeasure.text = "${weatherData.current.pressure_mb}мБар"
-            binding.windSpeed.text = "${weatherData.current.wind_kph}км/ч"
-            val words = weatherData.current.condition.text.split(" ")
-            val formattedText = words.joinToString("\n")
-            binding.tempSolutionText.text = formattedText
-            binding.textViewDate.text = weatherData.location.localtime
-            val imageUrl = weatherData.current.condition.icon
-            Glide.with(this).load("https://$imageUrl")
-                .transition(DrawableTransitionOptions.withCrossFade()).into(binding.tempSolution)
-            binding.maxTemp.text = "${weatherData.forecast.forecastday[0].day.maxtemp_c}°C"
-            binding.minTemp.text = "${weatherData.forecast.forecastday[0].day.mintemp_c}°C"
-            binding.sunriseTime.text = weatherData.forecast.forecastday[0].astro.sunrise
-            binding.sunsetTime.text = weatherData.forecast.forecastday[0].astro.sunset
-            binding.dayTimeText.text = formattingHour(
-                weatherData.location.localtime_epoch.toLong(), weatherData.location.tz_id
-            )
-        }
-
+        viewModel.getWeather("Bishkek")
+        getWeather()
         currentTimeRunnable = object : Runnable {
             override fun run() {
                 binding.dayTimeText.text = getCurrentTime()
@@ -82,6 +67,33 @@ class MainActivity : AppCompatActivity() {
                 }
                 handler.postDelayed(this, 1000)
             }
+        }
+    }
+
+
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getWeather() {
+        viewModel.livedata.observe(this) { weatherData ->
+            binding.temperature.text = "${weatherData.current.temp_c}°C"
+            binding.humidityPercent.text = "${weatherData.current.humidity}%"
+            binding.pressureMeasure.text = "${weatherData.current.pressure_mb}мБар"
+            binding.windSpeed.text = "${weatherData.current.wind_kph}км/ч"
+            val words = weatherData.current.condition.text.split(" ")
+            val formattedText = words.joinToString("\n")
+            binding.tempSolutionText.text = formattedText
+            binding.textViewDate.text = weatherData.location.localtime
+            val imageUrl = weatherData.current.condition.icon
+            Glide.with(this).load("https://$imageUrl")
+                .transition(DrawableTransitionOptions.withCrossFade()).into(binding.tempSolution)
+            binding.maxTemp.text = "${weatherData.forecast.forecastday[0].day.maxtemp_c}°C"
+            binding.minTemp.text = "${weatherData.forecast.forecastday[0].day.mintemp_c}°C"
+            binding.sunriseTime.text = weatherData.forecast.forecastday[0].astro.sunrise
+            binding.sunsetTime.text = weatherData.forecast.forecastday[0].astro.sunset
+            binding.button.text = weatherData.location.name + ", " + weatherData.location.country
+            binding.dayTimeText.text = formattingHour(
+                weatherData.location.localtime_epoch.toLong(), weatherData.location.tz_id
+            )
         }
     }
 
@@ -109,5 +121,11 @@ class MainActivity : AppCompatActivity() {
         val dataTime = instant.atZone(ZoneId.of(tzId))
         val changer = DateTimeFormatter.ofPattern("hh:mm:ss", Locale.ENGLISH)
         return changer.format(dataTime)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun click(name: String) {
+        viewModel.getWeather(name)
+        getWeather()
     }
 }

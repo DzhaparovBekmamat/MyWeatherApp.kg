@@ -20,10 +20,10 @@ class WeatherRepository @Inject constructor(
 //    private val api =
 //        ApiClient().retrofitClient() // экземпляр API-клиента. Это позволяет получить доступ к методам API для получения данных о погоде
 
-    fun getWeather(): LiveData<WeatherModel> { //LiveData - это компонент архитектуры Jetpack, который обеспечивает возможность наблюдать за изменениями данных
+    fun getWeather(name: String): LiveData<WeatherModel> { //LiveData - это компонент архитектуры Jetpack, который обеспечивает возможность наблюдать за изменениями данных
         val livedata =
             MutableLiveData<WeatherModel>() //является подклассом и предоставляет методы для обновления данных.
-        api.getCurrentWeather().enqueue(object :
+        api.getCurrentWeather(city = name).enqueue(object :
             Callback<WeatherModel> { //выполнение асинхронного запроса. enqueue - позволяет отправить запрос и определить обратные вызовы для обработки более успешного овтета или ошибки.
             override fun onResponse(
                 call: Call<WeatherModel>, response: Response<WeatherModel>
